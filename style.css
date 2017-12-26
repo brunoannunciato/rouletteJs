@@ -1,0 +1,21 @@
+html, body {
+	font-family: Arial, 'Sans-serif';
+	padding: 0;
+	margin: 0; 
+}
+
+.result {
+	color: #fff;
+}
+
+.background-red {
+	background: red;
+}
+
+.background-black {
+	background: black;
+}
+
+.background-green {
+	background: green;
+}

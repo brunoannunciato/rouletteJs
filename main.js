@@ -37,12 +37,13 @@ function rollet() {
 		resultDisplay.classList.add('background-green');
 	} else if (count() == 'impar') {
 		resultDisplay.classList.add('background-red');		
-	} else if (count() == 'par'){
+	} else if (count() == 'par') {
 		resultDisplay.classList.add('background-black');		
 	}
 }
 
-rollBtn.addEventListener('click', )
-
-
-
+rollBtn.addEventListener('click', function() {
+	getResult()
+	count()
+	rollet()
+})

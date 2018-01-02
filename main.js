@@ -19,31 +19,33 @@ function getResult() {
 }
 
 function count() {	
-	if (getResult() == 0) {
-		return 'neutro'
+	if (getResult() / 2 % 1) {
+		return 'impar';
 	}
 
-	else if (getResult() / 2 % 1) {
-		return 'impar'
+	else if (getResult() == 0) {
+		return 'neutro';
+
 	}
 
 	else {
-		return 'par'
+		return 'par';
 	}
 }
 
 function rollet() {
-	if (count() == 'neutro') {
+	if (count() === 'neutro') {
+		resultDisplay.classList = "result";
 		resultDisplay.classList.add('background-green');
-	} else if (count() == 'impar') {
+	} else if (count() === 'impar') {
+		resultDisplay.classList = "result";
 		resultDisplay.classList.add('background-red');		
-	} else if (count() == 'par') {
+	} else if (count() === 'par') {
+		resultDisplay.classList = "result";
 		resultDisplay.classList.add('background-black');		
 	}
 }
 
 rollBtn.addEventListener('click', function() {
-	getResult()
-	count()
-	rollet()
+	rollet();
 })

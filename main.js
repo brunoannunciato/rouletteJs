@@ -1,51 +1,61 @@
  function init () {
-	
 	balanceDisplay.textContent = '$' +  TotalBalance;
 }
 
 
 var TotalBalance 	= 5000,
 	balanceDisplay	= document.querySelector('.cash'),
-	bet 			= document.querySelector('.bet'),
 	betValue 		= document.querySelector('.betValue'),
 	rollBtn 		= document.querySelector('.roll')
 	resultDisplay 	= document.querySelector('.result');
 
-
 function getResult() {
-	var	result =  Math.floor(Math.random() * 36);
+	var	result =  Math.floor(Math.random() * 37);
 	resultDisplay.textContent = result;
-	return result;
+	return parseInt(result);
 }
 
-function count() {	
-	if (getResult() / 2 % 1) {
-		return 'impar';
+function count(num) {	
+	if (num % 2 == 0 && num != 0) {
+		return 'even';
+	} 
+	else if (num % 2 != 0){
+		return 'odd';
 	}
-
-	else if (getResult() == 0) {
-		return 'neutro';
-
-	}
-
 	else {
-		return 'par';
+		return 'neutral';
 	}
 }
 
 function rollet() {
-	if (count() === 'neutro') {
-		resultDisplay.classList = "result";
-		resultDisplay.classList.add('background-green');
-	} else if (count() === 'impar') {
-		resultDisplay.classList = "result";
-		resultDisplay.classList.add('background-red');		
-	} else if (count() === 'par') {
-		resultDisplay.classList = "result";
-		resultDisplay.classList.add('background-black');		
+	var r = getResult();
+	var result = count(r);
+	console.log(result, r)
+
+	if (result == 'even') {
+		resultDisplay.classList = 'result background-black';
 	}
+	else if (result == 'odd') {
+		resultDisplay.classList = 'result background-red';
+	}
+	else if (result == 'neutral') {
+		resultDisplay.classList = 'result background-green';
+	}
+}
+
+function bet() {
+	var betNum = document.querySelector('.bet').value;
+
+	if (count(getResult()) === count(betNum)) {
+ 		console.log('vitória');
+ 	}
+
+ 	else if (count(getResult()) !== count(betNum)){
+ 		console.log ('derrota');
+ 	}
 }
 
 rollBtn.addEventListener('click', function() {
 	rollet();
+	//bet();
 })

@@ -6,8 +6,9 @@
 var TotalBalance 	= 5000,
 	balanceDisplay	= document.querySelector('.cash'),
 	betValue 		= document.querySelector('.betValue'),
-	rollBtn 		= document.querySelector('.roll')
+	rollBtn 		= document.querySelector('.roll'),
 	resultDisplay 	= document.querySelector('.result');
+	
 
 function getResult() {
 	var	result =  Math.floor(Math.random() * 37);
@@ -30,7 +31,6 @@ function count(num) {
 function rollet() {
 	var r = getResult();
 	var result = count(r);
-	console.log(result, r)
 
 	if (result == 'even') {
 		resultDisplay.classList = 'result background-black';
@@ -44,18 +44,23 @@ function rollet() {
 }
 
 function bet() {
-	var betNum = document.querySelector('.bet').value;
+	var betNum = document.querySelector('.bet').value,
+		resultDisplayValue = parseInt(document.querySelector('.result').textContent);
 
-	if (count(getResult()) === count(betNum)) {
- 		console.log('vitória');
+	if (count(resultDisplayValue) === count(betNum)) {
+ 		if (resultDisplayValue == betNum) {
+			 console.log('Win x4')
+		 } else {
+			 console.log('Win x2')
+		 }
  	}
 
- 	else if (count(getResult()) !== count(betNum)){
- 		console.log ('derrota');
+ 	else if (count(resultDisplayValue) !== count(betNum)){
+ 		console.log ('Default');
  	}
 }
 
 rollBtn.addEventListener('click', function() {
 	rollet();
-	//bet();
+	bet();
 })

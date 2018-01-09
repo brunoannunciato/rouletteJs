@@ -1,11 +1,11 @@
  function init () {
-	balanceDisplay.textContent = '$' +  TotalBalance;
+	moneyDisplay.textContent = money;
 }
 
 
-var TotalBalance 	= 5000,
-	balanceDisplay	= document.querySelector('.cash'),
-	betValue 		= document.querySelector('.betValue'),
+var money 	=  5000,
+	moneyDisplay	= document.querySelector('.cash'),
+	valueToBet 		= document.querySelector('.betValue'),
 	rollBtn 		= document.querySelector('.roll'),
 	resultDisplay 	= document.querySelector('.result');
 	
@@ -28,7 +28,7 @@ function count(num) {
 	}
 }
 
-function rollet() {
+function fillColor() {
 	var r = getResult();
 	var result = count(r);
 
@@ -43,24 +43,25 @@ function rollet() {
 	}
 }
 
-function bet() {
+function betResult() {
 	var betNum = document.querySelector('.bet').value,
 		resultDisplayValue = parseInt(document.querySelector('.result').textContent);
 
 	if (count(resultDisplayValue) === count(betNum)) {
  		if (resultDisplayValue == betNum) {
-			 console.log('Win x4')
+			 console.log ('wx4')
+			 return 'wx4'
 		 } else {
-			 console.log('Win x2')
+			 console.log('xw2')
+			 return 'wx2'
 		 }
- 	}
-
- 	else if (count(resultDisplayValue) !== count(betNum)){
- 		console.log ('Default');
+ 	}	else if (count(resultDisplayValue) !== count(betNum)){
+		 console.log('lose')
+		 return 'lose'
  	}
 }
 
 rollBtn.addEventListener('click', function() {
-	rollet();
-	bet();
+	fillColor();
+	betResult();
 })

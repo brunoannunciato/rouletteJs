@@ -1,16 +1,28 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
 		<title>Roleta</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body onload="init()">
-		<h1>Roleta</h1>
-		<p class="cash">$ ---.--</p>
-		<p class="result">0</p>
-		<input type="text" class="betValue" placeholder="Quanto quer apostar">
-		<input type="text" class="bet" placeholder="Em qual número quer apostar">
-		<button class="roll">Rodar</button>
-		<script src="main.js"></script>
+		<div class="header">
+			<h1 class="title">Roulette</h1>
+			<div class="cash-box">
+				<p class="cash"> ---.-- </p>
+			</div>
+		</div>
+		<div class="container">
+			<div class="result-box">
+				<p class="result">0</p>
+			</div>
+			<div class="bet-box">
+				<input type="text" class="betValue" placeholder="Quanto apostar">
+				<input type="text" class="bet" placeholder="Apostar em">
+			</div>
+			<button class="roll">Rodar</button>
+			
+			<script src="main.js"></script>
+		</div>
 	</body>
 </html>

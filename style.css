@@ -1,7 +1,12 @@
 html, body {
-	font-family: Arial, 'Sans-serif';
+	font-family: 'Julius Sans One', sans-serif;
 	padding: 0;
 	margin: 0; 
+	background: #000;
+}
+
+* {
+	box-sizing: border-box;
 }
 
 .result {
@@ -9,13 +14,104 @@ html, body {
 }
 
 .background-red {
-	background: red;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff6868+30,ff0000+100 */
+	background: #ff6868; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover, #ff6868 30%, #ff0000 100%); /* FF3.6-15 */
+	background: -webkit-radial-gradient(center, ellipse cover, #ff6868 30%,#ff0000 100%); /* Chrome10-25,Safari5.1-6 */
+	background: radial-gradient(ellipse at center, #ff6868 30%,#ff0000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6868', endColorstr='#ff0000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .background-black {
-	background: black;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3d3d3d+30,131313+100 */
+	background: #3d3d3d; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover, #3d3d3d 30%, #131313 100%); /* FF3.6-15 */
+	background: -webkit-radial-gradient(center, ellipse cover, #3d3d3d 30%,#131313 100%); /* Chrome10-25,Safari5.1-6 */
+	background: radial-gradient(ellipse at center, #3d3d3d 30%,#131313 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d3d3d', endColorstr='#131313',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .background-green {
-	background: green;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#68ff6d+30,00ff11+100 */
+	background: #68ff6d; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover, #68ff6d 30%, #00ff11 100%); /* FF3.6-15 */
+	background: -webkit-radial-gradient(center, ellipse cover, #68ff6d 30%,#00ff11 100%); /* Chrome10-25,Safari5.1-6 */
+	background: radial-gradient(ellipse at center, #68ff6d 30%,#00ff11 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#68ff6d', endColorstr='#00ff11',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.container {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#4c4c4c+0,131313+100 */
+	background: #4c4c4c; /* Old browsers */
+	background: -moz-linear-gradient(top, #4c4c4c 0%, #131313 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #4c4c4c 0%,#131313 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #4c4c4c 0%,#131313 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=0 ); /* IE6-9 */
+	display: flex;
+	border: 2px solid #d39b00;
+	width: 100%;
+	height: 92%;
+	margin: 0 auto;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.header {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-around;
+	background: #f8b500;
+	border-bottom: 2px solid #d39b00;
+	padding: 0 6%;
+}
+
+.cash:before {
+	content: '$';
+}
+
+.cash {
+	font-weight: 900;
+}
+
+.result-box {
+	width: 100px;
+	height: 100px;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.result-box .result {
+	font-size: 3em;
+	text-shadow: 1px 1px 1px #000;
+	user-select: none;
+}
+
+.bet-box input {
+	font-family: 'Julius Sans One', sans-serif;
+	font-size: 1.2em;
+	padding: 5px 15px; 
+	border-radius: 5px;
+	border: 0;
+}
+
+.roll {
+	font-family: 'Julius Sans One', sans-serif;
+	cursor: pointer;
+	font-weight: bold;
+	border: 0;
+	width: 70px;
+	height: 70px;
+	border-radius: 100%;
+	user-select: none;
+	background: ##afaeae;
+	transition: all .5s ease;
+}
+
+.roll:hover {
+	background: #939292;
+	transition: all .5s ease;
 }

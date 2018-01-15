@@ -7,6 +7,7 @@ var money 	=  5000,
 	moneyDisplay	= document.querySelector('.cash'),
 	valueToBet 		= document.querySelector('.betValue'),
 	rollBtn 		= document.querySelector('.roll'),
+	resultBox		= document.querySelector('.result-box'),
 	resultDisplay 	= document.querySelector('.result');
 	
 
@@ -33,22 +34,28 @@ function fillColor() {
 	var result = count(r);
 
 	if (result == 'even') {
-		resultDisplay.classList = 'result background-black';
+		resultBox.classList = 'result-box background-black';
 	}
 	else if (result == 'odd') {
-		resultDisplay.classList = 'result background-red';
+		resultBox.classList = 'result-box background-red';
 	}
 	else if (result == 'neutral') {
-		resultDisplay.classList = 'result background-green';
+		resultBox.classList = 'result-box background-green';
 	}
 }
 
 function betResult() {
 	var betNum = document.querySelector('.bet').value,
-		resultDisplayValue = parseInt(document.querySelector('.result').textContent);
+		resultDisplayValue = parseInt(document.querySelector('.result').textContent),
+		betValue = document.querySelector('.betValue').value,
+		cash = document.querySelector('.cash').textContent;
 
 	if (count(resultDisplayValue) === count(betNum)) {
- 		if (resultDisplayValue == betNum) {
+		if (resultDisplayValue == 0) {
+			console.log ('wx16')
+			return 'wx16'
+		} 
+		else if (resultDisplayValue == betNum) {
 			 console.log ('wx4')
 			 return 'wx4'
 		 } else {
@@ -56,12 +63,43 @@ function betResult() {
 			 return 'wx2'
 		 }
  	}	else if (count(resultDisplayValue) !== count(betNum)){
-		 console.log('lose')
+		 console.log('lose');
 		 return 'lose'
  	}
 }
 
+function bet() {
+	document.querySelector('.cash').textContent = parseInt(document.querySelector('.cash').textContent) - parseInt(document.querySelector('.betValue').value);
+}
+
+function betReturn() {
+	var betValue = parseInt(document.querySelector('.betValue').value),
+	cash = parseInt(document.querySelector('.cash').textContent);
+
+	switch (betResult()) {
+		case 'lose':
+			document.querySelector('.cash').textContent = cash;
+		break;
+
+		case 'wx16':
+			cash += (betValue * 16);
+			document.querySelector('.cash').textContent = cash;
+		break;
+
+		case 'wx4':
+			cash += (betValue * 4);
+			document.querySelector('.cash').textContent = cash;
+		break;
+
+		default:
+			cash += (betValue * 2);
+			document.querySelector('.cash').textContent = cash;
+		break;
+	}
+}
+
 rollBtn.addEventListener('click', function() {
+	bet();
 	fillColor();
-	betResult();
+	betReturn();
 })

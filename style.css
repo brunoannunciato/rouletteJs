@@ -9,8 +9,14 @@ html, body {
 	box-sizing: border-box;
 }
 
+.green-text {
+	color: #00cc00;
+	font-weight: bold;
+}
+
 .result {
 	color: #fff;
+	text-align: center;
 }
 
 .background-red {
@@ -73,6 +79,31 @@ html, body {
 
 .cash {
 	font-weight: 900;
+}
+
+.historic {
+	display: flex;
+	justify-content: flex-end;
+	width: 26%;
+}
+
+.removing {
+	opacity: 0;
+	transform: rotate(-90deg);
+	display: block;
+	margin-right: 100px; 
+	transition: all 1s ease;
+}
+
+.ball-wrapper {
+	background: #fff;
+	margin: 0 2%;
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .result-box {

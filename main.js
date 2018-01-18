@@ -8,7 +8,9 @@ var money 	=  5000,
 	valueToBet 		= document.querySelector('.betValue'),
 	rollBtn 		= document.querySelector('.roll'),
 	resultBox		= document.querySelector('.result-box'),
-	resultDisplay 	= document.querySelector('.result');
+	resultDisplay 	= document.querySelector('.result'),
+	historic 		= document.querySelector('.historic'),
+	hist			= [];
 	
 
 function getResult() {
@@ -52,24 +54,29 @@ function betResult() {
 
 	if (count(resultDisplayValue) === count(betNum)) {
 		if (resultDisplayValue == 0) {
-			console.log ('wx16')
 			return 'wx16'
 		} 
 		else if (resultDisplayValue == betNum) {
-			 console.log ('wx4')
 			 return 'wx4'
 		 } else {
-			 console.log('xw2')
 			 return 'wx2'
 		 }
  	}	else if (count(resultDisplayValue) !== count(betNum)){
-		 console.log('lose');
 		 return 'lose'
  	}
 }
 
 function bet() {
-	document.querySelector('.cash').textContent = parseInt(document.querySelector('.cash').textContent) - parseInt(document.querySelector('.betValue').value);
+	var cash = parseInt(document.querySelector('.cash').textContent),
+		betValue = parseInt(document.querySelector('.betValue').value);
+
+	if (betValue > cash) {
+		alert('Está apostando mais do que tem.');
+		return false;
+	}
+	else {
+		document.querySelector('.cash').textContent = cash - betValue;
+	}
 }
 
 function betReturn() {
@@ -79,6 +86,11 @@ function betReturn() {
 	switch (betResult()) {
 		case 'lose':
 			document.querySelector('.cash').textContent = cash;
+
+			if (cash <= 0) {
+				alert('Sai da mesa');
+				window.location = window.location.href;
+			}
 		break;
 
 		case 'wx16':
@@ -98,8 +110,27 @@ function betReturn() {
 	}
 }
 
+function createHistoric() {
+	var lastResult = resultDisplay.textContent,
+		ball = document.createElement('div');
+		
+	ball.classList.add('ball-wrapper');
+	ball.textContent = lastResult;
+	
+	var balls = document.querySelectorAll('.ball-wrapper');
+
+	historic.appendChild(ball);
+
+	if (balls.length >= 10) {
+		balls[0].remove();
+	}
+
+	console.log(balls);
+}
+
 rollBtn.addEventListener('click', function() {
 	bet();
 	fillColor();
 	betReturn();
+	createHistoric();
 })

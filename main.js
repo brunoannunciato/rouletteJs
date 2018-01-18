@@ -31,18 +31,23 @@ function count(num) {
 	}
 }
 
-function fillColor() {
-	var r = getResult();
-	var result = count(r);
+function toColor(x, fill) {
+	let result = count(x);
 
 	if (result == 'even') {
-		resultBox.classList = 'result-box background-black';
+		fill.classList.add('background-black');
+		fill.classList.remove('background-red');
+		fill.classList.remove('background-green');
 	}
 	else if (result == 'odd') {
-		resultBox.classList = 'result-box background-red';
+		fill.classList.add('background-red');
+		fill.classList.remove('background-black');
+		fill.classList.remove('background-green');
 	}
 	else if (result == 'neutral') {
-		resultBox.classList = 'result-box background-green';
+		fill.classList.add('background-green');
+		fill.classList.remove('background-red');
+		fill.classList.remove('background-black');
 	}
 }
 
@@ -118,19 +123,18 @@ function createHistoric() {
 	ball.textContent = lastResult;
 	
 	var balls = document.querySelectorAll('.ball-wrapper');
-
+	
 	historic.appendChild(ball);
-
-	if (balls.length >= 10) {
+	
+	if (balls.length >= 10 ) {
 		balls[0].remove();
 	}
-
-	console.log(balls);
+	toColor(ball.textContent, ball);
 }
 
 rollBtn.addEventListener('click', function() {
 	bet();
-	fillColor();
+	toColor(getResult(), resultBox);
 	betReturn();
 	createHistoric();
 })
